@@ -1,0 +1,17 @@
+.more-info-link {
+    font-family: Arial, sans-serif; /* Specifies the font family for the link */
+    font-size: 14px; /* Sets the font size for the link */
+    color: #3366cc; /* Defines the text color of the link using a hexadecimal color value */
+    text-decoration: none; /* Removes any text decoration (e.g., underline) from the link */
+    padding: 5px 10px; /* Sets the padding (space inside the link) on the top/bottom and left/right sides */
+    background-color: #f2f2f2; /* Defines the background color of the link using a hexadecimal color value */
+    border: 1px solid #ccc; /* Adds a border around the link with a specified color */
+    border-radius: 10px; /* Applies rounded corners to the link */
+    transition: background-color 0.3s ease; /* Specifies a smooth transition effect for the background color when the link is hovered */
+}
+
+.more-info-link:hover {
+    background-color: #3366cc; /* Changes the background color of the link when it is hovered */
+    color: #fff; /* Modifies the text color of the link when it is hovered */
+    text-decoration: underline; /* Adds an underline to the link when it is hovered */
+}

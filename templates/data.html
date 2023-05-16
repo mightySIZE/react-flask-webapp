@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Data
+{% endblock %}
+
+{% block content %}
+    <section class="py-5 mt-5">
+        <div class="container py-4 py-xl-5">
+            <table class="table">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Birth</th>
+                    <th scope="col">Death</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">More Info</th>
+                </tr>
+                </thead>
+            <tbody>
+                {% for great in greats %}
+                <tr>
+                    <th scope="row" class="table-light">{{ loop.index }}</th>
+                    <td>{{ great.name }}</td>
+                    <td>{{ great.origin }}</td>
+                    <td>{{ great.birth }}</td>
+                    <td>{{ great.death }}</td>
+                    <td>{{ great.age }}</td>
+                    <td><a href={{ great.url }} class="more-info-link">Wiki</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
