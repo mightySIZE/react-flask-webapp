@@ -26,17 +26,10 @@ def home():
     return render_template('home.html')
 
 @app.route('/data')
-def data():
-    greats = [
-        {'id': 1, 'name': 'Alexander the Great', 'origin': 'Macedonia', 'birth': '356 BC', 'death': '323 BC', 'age': '32', 'url': 'https://en.wikipedia.org/wiki/Alexander_the_Great'},
-        {'id': 2, 'name': 'Julius Caesar', 'origin': 'Rome', 'birth': '100 BC', 'death': '44 BC', 'age': '56', 'url': 'https://en.wikipedia.org/wiki/Julius_Caesar'},
-        {'id': 3, 'name': 'Napoleon Bonaparte', 'origin': 'France', 'birth': '1769 AD', 'death': '1821 AD', 'age': '51', 'url': 'https://en.wikipedia.org/wiki/Napoleon'},
-        {'id': 4, 'name': 'Genghis Khan', 'origin': 'Mongolia', 'birth': '1162 AD', 'death': '1227 AD', 'age': '65', 'url': 'https://en.wikipedia.org/wiki/Genghis_Khan'},
-        {'id': 5, 'name': 'Hannibal Barca', 'origin': 'Carthage', 'birth': '247 BC', 'death': '183 BC', 'age': '64', 'url': 'https://en.wikipedia.org/wiki/Hannibal'},
-        {'id': 6, 'name': 'Attila the Hun', 'origin': 'Hungary', 'birth': '406 AD', 'death': '453 AD', 'age': '47', 'url': 'https://en.wikipedia.org/wiki/Attila'},
-    ]
+def viewData():
+    greats = Great.query.all()
 
-    return render_template('data.html', greats=greats)
+    return render_template('viewData.html', greats=greats)
 
 @app.route('/insertData', methods=['POST', 'GET'])
 def insertData():
@@ -51,7 +44,6 @@ def insertData():
         db.session.add(user)
         db.session.commit()
     return render_template('insertData.html')
-
 
 
 @app.route('/integrations')
