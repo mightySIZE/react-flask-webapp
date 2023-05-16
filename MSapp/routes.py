@@ -1,25 +1,6 @@
-from flask import Flask, url_for, request, render_template
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-
-app = Flask(__name__) # this line will create the flask object
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MS.db' # this line will connect flask with the database, also /// means relative path, //// means absolute path
-db = SQLAlchemy(app) # this line will create the database object
-migrate = Migrate(app, db) # this line will create the migration object
-app.debug = True
-
-# this class will create the table in the database
-class Great(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
-    origin = db.Column(db.String(80), unique=False, nullable=False)
-    birth = db.Column(db.String(80), unique=False, nullable=False)
-    death = db.Column(db.String(80), unique=False, nullable=True)
-    age = db.Column(db.Integer, unique=False, nullable=False)
-    url = db.Column(db.String(200), unique=False, nullable=True)
-
-    def __repr__(self):
-        return '<Great %r>' % self.name
+from flask import request, render_template
+from MSapp import app, db
+from MSapp.models import Great
 
 @app.route('/')
 def home():
@@ -79,7 +60,3 @@ def signup():
     # # the code below is executed if the request method
     # # was GET or the credentials were invalid
     return render_template('signup.html', error=error)
-
-if __name__ == '__main__':
-
-    app.run(debug=True)
