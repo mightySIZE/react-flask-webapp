@@ -12,7 +12,7 @@ class Great(db.Model):
     origin = db.Column(db.String(80), unique=False, nullable=False)
     birth = db.Column(db.String(80), unique=False, nullable=False)
     death = db.Column(db.String(80), unique=False, nullable=True)
-    age = db.Column(db.integer, unique=False, nullable=False)
+    age = db.Column(db.Integer, unique=False, nullable=False)
     url = db.Column(db.String(200), unique=True, nullable=True)
 
 @app.route('/')
