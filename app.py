@@ -18,6 +18,9 @@ class Great(db.Model):
     age = db.Column(db.Integer, unique=False, nullable=False)
     url = db.Column(db.String(200), unique=False, nullable=True)
 
+    def __repr__(self):
+        return '<Great %r>' % self.name
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -59,6 +62,23 @@ def integrations():
 def pricing():
     return render_template('pricing.html')
 
+<<<<<<< Updated upstream
+=======
+@app.route('/insertData', methods=['POST', 'GET'])
+def insertData():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        origin = request.form.get('origin')
+        birth = request.form.get('birth')
+        death = request.form.get('death')
+        age = request.form.get('age')
+        url = request.form.get('url')
+        user = Great(name=name, origin=origin, birth=birth, death=death, age=age, url=url)
+        db.session.add(user)
+        db.session.commit()
+    return render_template('insertData.html')
+
+>>>>>>> Stashed changes
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     error = None
