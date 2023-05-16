@@ -6,18 +6,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>MoSite</title>
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <script src="{{ url_for('static', filename='js/startup-modern.js') }}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&display=swap" rel="stylesheet">
     {% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
-        {% block nav %}
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav" style="height: 80px;text-shadow: 0.2px 0.2px var(--bs-navbar-active-color);display: inline;overflow: visible;transform: translate(-5px);">
+        {% block navbar %}
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/"
-                ><span>Brand</span>
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <span style="width: 192.75px;color: rgb(47,185,228);font-size: 25px;font-family: caveat;text-decoration: underline;text-align: center;">
+                    Mohamed &amp; Sophia
+                </span>
             </a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span>
@@ -90,6 +94,8 @@
         </div>
         {% endblock %}
     </footer>
+    <script src="{{ url_for('static', filename='js/collapse.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bs-init.js') }}"></script>
 
 </body>
 
