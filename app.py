@@ -1,9 +1,11 @@
 from flask import Flask, url_for, request, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__) # this line will create the flask object
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MS.db' # this line will connect flask with the database, also /// means relative path, //// means absolute path
 db = SQLAlchemy(app) # this line will create the database object
+migrate = Migrate(app, db) # this line will create the migration object
 
 # this class will create the table in the database
 class Great(db.Model):
