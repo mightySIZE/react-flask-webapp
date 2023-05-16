@@ -3,9 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 app = Flask(__name__) # this line will create the flask object
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MS.db' # this line will connect flask with the database, also /// means relative path, //// means absolute path
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MS.sqlite3' # this line will connect flask with the database, also /// means relative path, //// means absolute path
 db = SQLAlchemy(app) # this line will create the database object
 migrate = Migrate(app, db) # this line will create the migration object
+app.debug = True
 
 # this class will create the table in the database
 class Great(db.Model):
@@ -15,7 +16,7 @@ class Great(db.Model):
     birth = db.Column(db.String(80), unique=False, nullable=False)
     death = db.Column(db.String(80), unique=False, nullable=True)
     age = db.Column(db.Integer, unique=False, nullable=False)
-    url = db.Column(db.String(200), unique=True, nullable=True)
+    url = db.Column(db.String(200), unique=False, nullable=True)
 
 @app.route('/')
 def home():
@@ -34,6 +35,22 @@ def data():
 
     return render_template('data.html', greats=greats)
 
+@app.route('/insertData', methods=['POST', 'GET'])
+def insertData():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        origin = request.form.get('origin')
+        birth = request.form.get('birth')
+        death = request.form.get('death')
+        age = request.form.get('age')
+        url = request.form.get('url')
+        user = Great(name=name, origin=origin, birth=birth, death=death, age=age, url=url)
+        db.session.add(user)
+        db.session.commit()
+    return render_template('insertData.html')
+
+
+
 @app.route('/integrations')
 def integrations():
     return render_template('integrations.html')
@@ -41,10 +58,6 @@ def integrations():
 @app.route('/pricing')
 def pricing():
     return render_template('pricing.html')
-
-@app.route('/contacts')
-def contacts():
-    return render_template('contacts.html')
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -82,4 +95,5 @@ def signup():
 
 
 if __name__ == '__main__':
+
     app.run(debug=True)
