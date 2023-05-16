@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 app = Flask(__name__) # this line will create the flask object
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MS.sqlite3' # this line will connect flask with the database, also /// means relative path, //// means absolute path
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///MS.db' # this line will connect flask with the database, also /// means relative path, //// means absolute path
 db = SQLAlchemy(app) # this line will create the database object
 migrate = Migrate(app, db) # this line will create the migration object
 app.debug = True
@@ -62,23 +62,6 @@ def integrations():
 def pricing():
     return render_template('pricing.html')
 
-<<<<<<< Updated upstream
-=======
-@app.route('/insertData', methods=['POST', 'GET'])
-def insertData():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        origin = request.form.get('origin')
-        birth = request.form.get('birth')
-        death = request.form.get('death')
-        age = request.form.get('age')
-        url = request.form.get('url')
-        user = Great(name=name, origin=origin, birth=birth, death=death, age=age, url=url)
-        db.session.add(user)
-        db.session.commit()
-    return render_template('insertData.html')
-
->>>>>>> Stashed changes
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     error = None
@@ -104,15 +87,6 @@ def signup():
     # # the code below is executed if the request method
     # # was GET or the credentials were invalid
     return render_template('signup.html', error=error)
-
-# tests the functions, outside of the web server
-#with app.test_request_context():
-    #print(url_for('index'))
-    #print(url_for('login'))
-    #print(url_for('login', next='/'))
-    #print(url_for('profile', username='John Doe'))
-    #url_for('index', filename='index.html')
-
 
 if __name__ == '__main__':
 
