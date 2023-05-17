@@ -55,7 +55,7 @@ def signup():
     if form.validate_on_submit(): # if the form is valid/user has submitted the form
         new_user = User(username=form.username.data,
                         email=form.email.data,
-                        password=form.password1.data)
+                        password_hash=form.password1.data)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('home'))

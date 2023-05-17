@@ -12,6 +12,7 @@
                 <h2 class="mb-4 text-center fw-semibold">Sign Up!</h2>
                 <form class="text-center form-register" method="POST">
                     {{ form.csrf_token }}
+                    {{ form.hidden_tag() }}
                     {{ form.username(class="form-control mb-3", placeholder="Username") }}
                     {{ form.email(class="form-control mb-3", placeholder="Email") }}
                     {{ form.password1(class="form-control mb-3", placeholder="Password") }}
@@ -23,24 +24,3 @@
     </section>
 
 {% endblock %}
-
-{% comment %} this is the old code for the sign up page {% endcomment %}
-{% comment %} <section class="py-5 mt-5">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-6 col-xl-4">
-            <div class="card mb-5">
-                <div class="card-body d-flex flex-column align-items-center">
-                    <h4 class="mb-4">Sign Up!</h4>
-                    <form class="text-center form-register" method="POST">
-                        <div class="mb-3"><input class="form-control" type="text" name="username" placeholder="Username" /></div>
-                        <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email" /></div>
-                        <div class="mb-3"><input class="form-control" type="email" name="email2" placeholder="Confirm Email" /></div>
-                        <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password" /></div>
-                        <div class="mb-3"><input class="form-control" type="password" name="password2" placeholder="Confirm Password" /></div>
-                        <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Sign Up</button></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> {% endcomment %}
