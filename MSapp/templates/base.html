@@ -47,7 +47,20 @@
         {% endblock %}
     </nav>
 
-    {% block content %}s
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
     {% endblock %}
 
     <footer>
@@ -101,8 +114,14 @@
         </div>
         {% endblock %}
     </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='js/collapse.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bs-init.js') }}"></script>
+    <!--  <script src="{{ url_for('static', filename='js/alert.js') }}"></script> -->
+    
 
 </body>
 

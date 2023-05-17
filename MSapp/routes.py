@@ -1,4 +1,4 @@
-from flask import request, render_template, redirect, url_for
+from flask import request, render_template, redirect, url_for, flash, get_flashed_messages
 from MSapp import app, db
 from MSapp.models import Great, User
 from MSapp.forms import RegisterationForm
@@ -59,4 +59,8 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('home'))
+    
+    if form.errors != {}: # if there are no errors from the validations
+        for err_msg in form.errors.values(): # loop through the dictionary of errors
+            flash(f'There was an error with creating a user: {err_msg}', category='danger') # print each error message to the screen
     return render_template('signup.html', form=form)
