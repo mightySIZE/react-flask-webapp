@@ -1,7 +1,7 @@
 from flask import request, render_template, redirect, url_for, flash, get_flashed_messages
 from MSapp import app, db, bcrypt
 from MSapp.models import Great, User
-from MSapp.forms import RegisterationForm
+from MSapp.forms import RegisterationForm, LoginForm
 
 @app.route('/')
 def home():
@@ -37,26 +37,12 @@ def pricing():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    form = LoginForm()
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
-        # Here you should validate the username and password against your user database.
-        # For the sake of simplicity, let's assume we have a single user with username 'admin'
-        # and hashed password '$2b$12$7.b1.wWY0UJjBoziSMERqOjG2v29xG.AYFJ23wWUUTLRYE1pBChhO'.
-        # You would normally fetch the user's hashed password from your database.
-        if username == 'admin':
-            hashed_password = '$2b$12$7.b1.wWY0UJjBoziSMERqOjG2v29xG.AYFJ23wWUUTLRYE1pBChhO'
-            if bcrypt.check_password_hash(hashed_password, password):
-                # Password is correct, redirect to the home page or any other page.
-                return redirect(url_for('home'))
-            else:
-                # Password is incorrect, show an error message.
-                error = 'Invalid username or password'
-                return render_template('login.html', error=error)
-
-    # If the request method is GET or the login attempt was unsuccessful, show the login form.
-    return render_template('login.html')
+    return render_template('login.html', form=form)
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
