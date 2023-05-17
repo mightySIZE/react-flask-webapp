@@ -2,7 +2,7 @@ from flask import request, render_template, redirect, url_for, flash, get_flashe
 from MSapp import app, db, bcrypt, login_manager
 from MSapp.models import Great, User
 from MSapp.forms import RegisterationForm, LoginForm
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
 def home():
@@ -50,6 +50,12 @@ def login():
 
     return render_template('login.html', form=form)
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    flash('You have been logged out', category='success')
+    return redirect(url_for('home'))
+
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     form = RegisterationForm()
@@ -59,6 +65,7 @@ def signup():
                         password=form.password1.data)
         db.session.add(new_user)
         db.session.commit()
+        flash('You have successfully created an account!', category='success')
         return redirect(url_for('home'))
     if form.errors != {}: # if there are no errors from the validations
         for err_msg in form.errors.values(): # loop through the dictionary of errors
