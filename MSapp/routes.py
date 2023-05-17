@@ -1,5 +1,5 @@
 from flask import request, render_template, redirect, url_for, flash, get_flashed_messages
-from MSapp import app, db
+from MSapp import app, db, bcrypt
 from MSapp.models import Great, User
 from MSapp.forms import RegisterationForm
 
@@ -8,13 +8,12 @@ def home():
     return render_template('home.html')
 
 @app.route('/data')
-def viewData():
+def viewData(): # this function will show the data from the database
     greats = Great.query.all()
-
     return render_template('viewData.html', greats=greats)
 
 @app.route('/insertData', methods=['POST', 'GET'])
-def insertData():
+def insertData(): # this function will insert data into the database
     if request.method == 'POST':
         name = request.form.get('name')
         origin = request.form.get('origin')
@@ -55,12 +54,11 @@ def signup():
     if form.validate_on_submit(): # if the form is valid/user has submitted the form
         new_user = User(username=form.username.data,
                         email=form.email.data,
-                        password_hash=form.password1.data)
+                        password_hash=bcrypt.generate_password_hash(form.password1.data))
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('home'))
-    
     if form.errors != {}: # if there are no errors from the validations
         for err_msg in form.errors.values(): # loop through the dictionary of errors
-            flash(f'There was an error with creating a user: {err_msg}', category='danger') # print each error message to the screen
+            flash(f'Registeration Error: {err_msg}', category='danger') # print each error message to the screen
     return render_template('signup.html', form=form)

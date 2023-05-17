@@ -9,3 +9,5 @@ sqlalchemy==2.0.13 # this library is used to work with the database
 sqlite==3.41.2 # this library is used to work with the database
 werkzeug==2.3.4 # provides a solid base for building web applications by offering essential functionalities like routing, request and response handling, URL generation, and more. flask is built on top of this library
 email_validator==2.0.0.post2 # this library is used to validate email addresses
+bcrypt==4.0.1 # this library is used to hash passwords
+flask_bcrypt==1.0.1 # this library is used to hash passwords in flask
