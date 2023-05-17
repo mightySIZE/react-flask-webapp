@@ -21,7 +21,6 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav" style="height: 80px;text-shadow: 0.2px 0.2px var(--bs-navbar-active-color);display: inline;overflow: visible;transform: translate(-5px);">
-        {% block navbar %}
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
                 <span style="width: 192.75px;color: rgb(47,185,228);font-size: 25px;font-family: caveat;text-decoration: underline;text-align: center;">
@@ -44,7 +43,6 @@
                     <a class="btn btn-secondary shadow" role="button" href="{{ url_for('signup') }}">Sign up</a>
             </div>
         </div>
-        {% endblock %}
     </nav>
 
     <div class="col-sm-4" style=" position: fixed; left: 100x; right: 30px; z-index: 9999;width: 30%">
@@ -64,7 +62,6 @@
     {% endblock %}
 
     <footer>
-        {% block footer %}
         <div class="container py-4 py-lg-5">
             <div class="row row-cols-2 row-cols-md-4">
                 <div class="col-12 col-md-3">
@@ -112,7 +109,6 @@
                 </ul>
             </div>
         </div>
-        {% endblock %}
     </footer>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/collapse.js') }}"></script>
