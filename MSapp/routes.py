@@ -1,6 +1,7 @@
 from flask import request, render_template
 from MSapp import app, db
 from MSapp.models import Great, User
+from MSapp.forms import RegisterationForm
 
 @app.route('/')
 def home():
@@ -50,13 +51,5 @@ def login():
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
-    error = None
-    # if request.method == 'POST':
-    #     # if valid_login(request.form['username'],
-    #     #                request.form['password']):
-    #     #     return log_the_user_in(request.form['username'])
-    #     else:
-    #         error = 'Invalid username/password'
-    # # the code below is executed if the request method
-    # # was GET or the credentials were invalid
-    return render_template('signup.html', error=error)
+    form = RegisterationForm()
+    return render_template('signup2.html', form=form)
