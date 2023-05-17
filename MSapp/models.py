@@ -1,6 +1,11 @@
-from MSapp import db, bcrypt
+from MSapp import db, bcrypt, login_manager
+from flask_login import UserMixin
 
-class User(db.Model):
+@login_manager.user_loader # this is a decorator, it will allow us to access the function as an attribute
+def load_user(user_id): # this function will load the user
+    return User.query.get(int(user_id)) # this line will return the user
+
+class User(db.Model, UserMixin): # UserMixin will give us the default implementations of the functions that we need to have in the User class for flask_login to work
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
