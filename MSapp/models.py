@@ -1,10 +1,18 @@
-from MSapp import db
+from MSapp import db, bcrypt
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(60), nullable=False)
+
+    @property # this is a decorator, it will allow us to access the function as an attribute
+    def password(self): # this function will return the password
+        return self.password
+    
+    @password.setter # this is a decorator, it will allow us to set the password
+    def password(self, plain_text_password): # this function will set the password
+        self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8') # this line will hash the password and decode it to utf-8 so that it can be stored in the database (as a string)
 
 class Great(db.Model):
     id = db.Column(db.Integer, primary_key=True)
