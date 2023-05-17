@@ -1,7 +1,8 @@
 from flask import request, render_template, redirect, url_for, flash, get_flashed_messages
-from MSapp import app, db, bcrypt
+from MSapp import app, db, bcrypt, login_manager
 from MSapp.models import Great, User
 from MSapp.forms import RegisterationForm, LoginForm
+from flask_login import login_user
 
 @app.route('/')
 def home():
@@ -38,9 +39,14 @@ def pricing():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm()
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    if form.validate_on_submit():
+        attempted_user = User.query.filter_by(username=form.username.data).first()
+        if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data): # this line will check if we have a user with the username that the user entered and if the password that the user entered is correct
+            login_user(attempted_user)
+            flash(f'Success! You are logged in as: {attempted_user.username}', category='success')
+            return redirect(url_for('home'))
+        else:
+            flash('Incorrect Username or Password. Please try again.', category='danger')
 
     return render_template('login.html', form=form)
 

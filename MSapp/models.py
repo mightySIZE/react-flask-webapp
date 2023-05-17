@@ -13,6 +13,9 @@ class User(db.Model):
     @password.setter # this is a decorator, it will allow us to set the password
     def password(self, plain_text_password): # this function will set the password
         self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8') # this line will hash the password and decode it to utf-8 so that it can be stored in the database (as a string)
+    
+    def check_password_correction(self, attempted_password): # this function will check if the password is correct
+        return bcrypt.check_password_hash(self.password_hash, attempted_password) # this line will check if the password is correct, it will return True if it is correct and False if it is not correct
 
 class Great(db.Model):
     id = db.Column(db.Integer, primary_key=True)

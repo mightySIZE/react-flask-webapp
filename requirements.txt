@@ -6,8 +6,9 @@ flask-wtf==1.1.1 # this library is used to work with wtforms and flask
 wtforms==3.0.1 # this library is used to create forms, such as the login form
 jinja2==3.1.2 # this library is used to create the templates
 sqlalchemy==2.0.13 # this library is used to work with the database
-sqlite==3.41.2 # this library is used to work with the database
+sqlite==3.41.2 # this library is used to work with the database # I am using this in this application
 werkzeug==2.3.4 # provides a solid base for building web applications by offering essential functionalities like routing, request and response handling, URL generation, and more. flask is built on top of this library
 email_validator==2.0.0.post2 # this library is used to validate email addresses
 bcrypt==4.0.1 # this library is used to hash passwords
 flask_bcrypt==1.0.1 # this library is used to hash passwords in flask
+flask_login==0.6.2 # this library is used to manage the user login

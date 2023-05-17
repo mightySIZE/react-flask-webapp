@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 app = Flask(__name__) # this line will create the flask object
 app.app_context().push() # this line will create the application context, which is needed for the db object because it is not created with the app object in this file
@@ -10,6 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///Users/mo/Desktop/current pr
 db = SQLAlchemy(app) # this line will create the database object
 migrate = Migrate(app, db) # this line will create the migration object
 bcrypt = Bcrypt(app) # this line will create the bcrypt object
+login_manager = LoginManager(app) # this line will create the login manager object
 
 # we import routes after the app object is created because the routes module needs to import the app object
 from MSapp import routes
