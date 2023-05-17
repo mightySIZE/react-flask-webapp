@@ -1,8 +1,12 @@
-alembic==1.11.0
-flask==2.3.2
-flask-migrate==2.4.0
-flask-sqlalchemy==3.0.3
-jinja2==3.1.2
-sqlalchemy==2.0.13
-sqlite==3.41.2
-werkzeug==2.3.4
+alembic==1.11.0 # this library is a database migration tool for SQLAlchemy
+flask==2.3.2 # this library is used to create the web application
+flask-migrate==2.4.0 # this library is used to manage database migrations, also uses Alembic
+flask-sqlalchemy==3.0.3 # this library is used to manage the database
+flask-wtf==1.1.1 # this library is used to work with wtforms and flask
+wtforms==3.0.1 # this library is used to create forms, such as the login form
+jinja2==3.1.2 # this library is used to create the templates
+sqlalchemy==2.0.13 # this library is used to work with the database
+sqlite==3.41.2 # this library is used to work with the database
+werkzeug==2.3.4 # provides a solid base for building web applications by offering essential functionalities like routing, request and response handling, URL generation, and more. flask is built on top of this library
+```
+```
