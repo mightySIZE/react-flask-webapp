@@ -17,3 +17,18 @@ class Great(db.Model):
 
     def __repr__(self):
         return '<Great %r>' % self.name
+
+# how to delete all data from a table
+# >>> python
+# >>> from MSapp import models
+# >>> from MSapp.models import User, Great
+# >>> from MSapp import db
+
+### for all records ###
+# >>> db.session.query(User).delete()
+# 1
+# >>> db.session.
+
+### for specific records ###
+# >>> db.session.query(User).filter(User.id == 1).delete()
+# >>> db.session.commit()

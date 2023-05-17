@@ -1,4 +1,4 @@
-from flask import request, render_template
+from flask import request, render_template, redirect, url_for
 from MSapp import app, db
 from MSapp.models import Great, User
 from MSapp.forms import RegisterationForm
@@ -52,4 +52,11 @@ def login():
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     form = RegisterationForm()
-    return render_template('signup2.html', form=form)
+    if form.validate_on_submit(): # if the form is valid/user has submitted the form
+        new_user = User(username=form.username.data,
+                        email=form.email.data,
+                        password=form.password1.data)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('signup.html', form=form)

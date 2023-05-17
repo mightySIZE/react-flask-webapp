@@ -8,7 +8,6 @@ app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280bc245' # this is the secr
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///Users/mo/Desktop/current project/MSapp/instance/MS.db' # this line will connect flask with the database, also /// means relative path, //// means absolute path
 db = SQLAlchemy(app) # this line will create the database object
 migrate = Migrate(app, db) # this line will create the migration object
-app.debug = True
 
 # we import routes after the app object is created because the routes module needs to import the app object
 from MSapp import routes
