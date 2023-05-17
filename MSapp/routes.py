@@ -16,15 +16,18 @@ def viewData(): # this function will show the data from the database
 @app.route('/insertData', methods=['POST', 'GET'])
 def insertData(): # this function will insert data into the database
     if request.method == 'POST':
-        name = request.form.get('name')
-        origin = request.form.get('origin')
-        birth = request.form.get('birth')
-        death = request.form.get('death')
-        age = request.form.get('age')
-        url = request.form.get('url')
-        user = Great(name=name, origin=origin, birth=birth, death=death, age=age, url=url)
-        db.session.add(user)
-        db.session.commit()
+        if  current_user.is_authenticated:
+            name = request.form.get('name')
+            origin = request.form.get('origin')
+            birth = request.form.get('birth')
+            death = request.form.get('death')
+            age = request.form.get('age')
+            url = request.form.get('url')
+            user = Great(name=name, origin=origin, birth=birth, death=death, age=age, url=url)
+            db.session.add(user)
+            db.session.commit()
+        else:
+            flash('You must be logged in to insert data', category='info')
     return render_template('insertData.html')
 
 
@@ -65,6 +68,7 @@ def signup():
                         password=form.password1.data)
         db.session.add(new_user)
         db.session.commit()
+        login_user(new_user)
         flash('You have successfully created an account!', category='success')
         return redirect(url_for('home'))
     if form.errors != {}: # if there are no errors from the validations
