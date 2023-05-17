@@ -22,7 +22,7 @@
 <body>
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav" style="height: 80px;text-shadow: 0.2px 0.2px var(--bs-navbar-active-color);display: inline;overflow: visible;transform: translate(-5px);">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
                 <span style="width: 192.75px;color: rgb(47,185,228);font-size: 25px;font-family: caveat;text-decoration: underline;text-align: center;">
                     Mohamed &amp; Sophia
                 </span>
@@ -38,9 +38,14 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('insertData') }}">Insert Data</a></li> 
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('integrations') }}">Integrations</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('pricing') }}">Pricing</a></li>                   
+                    <li class="nav-item">
                 </ul>
-                    <a class="btn btn-primary shadow" style="margin-right: 20px;" role="button" href="{{ url_for('login') }}">Login</a>
-                    <a class="btn btn-secondary shadow" role="button" href="{{ url_for('signup') }}">Sign up</a>
+                    {% if current_user.is_authenticated %} <!-- can access current_user because of flask_login -->
+                            <a class="btn btn-primary shadow" style="margin-left: 10px;" role="button" href="#">Logout</a>
+                    {% else %}
+                        <a class="btn btn-primary shadow" style="margin-right: 20px;" role="button" href="{{ url_for('login') }}">Login</a>
+                        <a class="btn btn-secondary shadow" role="button" href="{{ url_for('signup') }}">Sign up</a>
+                    {% endif %}
             </div>
         </div>
     </nav>
