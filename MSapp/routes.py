@@ -1,6 +1,6 @@
 from flask import request, render_template
 from MSapp import app, db
-from MSapp.models import Great
+from MSapp.models import Great, User
 
 @app.route('/')
 def home():

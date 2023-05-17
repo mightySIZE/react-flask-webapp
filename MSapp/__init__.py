@@ -9,4 +9,5 @@ db = SQLAlchemy(app) # this line will create the database object
 migrate = Migrate(app, db) # this line will create the migration object
 app.debug = True
 
+# we import routes after the app object is created because the routes module needs to import the app object
 from MSapp import routes
