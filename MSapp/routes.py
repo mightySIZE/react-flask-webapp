@@ -9,6 +9,7 @@ def home():
     return render_template('home.html')
 
 @app.route('/data')
+@login_required
 def viewData(): # this function will show the data from the database
     greats = Great.query.all()
     return render_template('viewData.html', greats=greats)
