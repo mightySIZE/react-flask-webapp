@@ -41,7 +41,7 @@
                     <li class="nav-item">
                 </ul>
                     {% if current_user.is_authenticated %} <!-- can access current_user because of flask_login -->
-                            <a><span style="width: 192.75px;color: rgb(35,66,75);font-size: 27px;font-family: caveat; text-align: center;">
+                            <a><span style="width: 192.75px;color: rgb(35,66,75);font-size: 20px; text-align: center;">
                                 Welcome, {{ current_user.username }}!
                             </span></a>
                         <a class="btn btn-primary shadow" style="margin-left: 10px;" role="button" href="{{ url_for('logout') }}">Logout</a>
