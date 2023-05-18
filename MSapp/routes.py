@@ -49,6 +49,11 @@ def login():
     if form.validate_on_submit():
         attempted_user = User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data): # this line will check if we have a user with the username that the user entered and if the password that the user entered is correct
+            if form.remember.data:
+                login_user(attempted_user, remember=True)
+                flash(f'Success! You are logged in as: {attempted_user.username} and you are remembered!', category='success')
+                return redirect(url_for('home'))
+            
             login_user(attempted_user)
             flash(f'Success! You are logged in as: {attempted_user.username}', category='success')
             return redirect(url_for('home'))
