@@ -23,9 +23,13 @@ def insertData(): # this function will insert data into the database
             death = request.form.get('death')
             age = request.form.get('age')
             url = request.form.get('url')
+            if name == '':
+                flash('Name cannot be empty', category='info')
+                return render_template('insertData.html')
             user = Great(name=name, origin=origin, birth=birth, death=death, age=age, url=url)
             db.session.add(user)
             db.session.commit()
+            flash('Great human, immortilized!', category='success')
         else:
             flash('You must be logged in to insert data', category='info')
     return render_template('insertData.html')

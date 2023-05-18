@@ -25,10 +25,10 @@ class User(db.Model, UserMixin): # UserMixin will give us the default implementa
 class Great(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
-    origin = db.Column(db.String(80), unique=False, nullable=False)
-    birth = db.Column(db.String(80), unique=False, nullable=False)
+    origin = db.Column(db.String(80), unique=False, nullable=True)
+    birth = db.Column(db.String(80), unique=False, nullable=True)
     death = db.Column(db.String(80), unique=False, nullable=True)
-    age = db.Column(db.Integer, unique=False, nullable=False)
+    age = db.Column(db.Integer, unique=False, nullable=True)
     url = db.Column(db.String(200), unique=False, nullable=True)
 
     def __repr__(self):
