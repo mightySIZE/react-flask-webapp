@@ -8,7 +8,7 @@ from datetime import timedelta
 app = Flask(__name__) # this line will create the flask object
 app.app_context().push() # this line will create the application context, which is needed for the db object because it is not created with the app object in this file
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280bc245' # this is the secret key for the form
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///Users/mo/Desktop/Flask-practice-website-for-learning/MSapp/instance/MS.db' # this line will connect flask with the database, also /// means relative path, //// means absolute path
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/mo/Desktop/my-Flask-webapp/MSapp/instance/MS.db' # this line will connect flask with the database, also /// means relative path, //// means absolute path
 app.config['REMEMBER_COOKIE_DURATION'] = timedelta(seconds=3600) # this line will set the remember me cookie to expire after 30 seconds
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=3600) # this line will set the session to expire after 30 seconds
 db = SQLAlchemy(app) # this line will create the database object
