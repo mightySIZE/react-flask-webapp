@@ -8,9 +8,9 @@ This repository contains a Flask web application that utilizes various libraries
 
 	flask==2.3.2: Flask is a lightweight web application framework used to create the core structure and routing of the web application.
 
-flask-migrate==2.4.0: Flask-Migrate is an extension for Flask that integrates Alembic for handling database migrations within the Flask application.
+        flask-migrate==2.4.0: Flask-Migrate is an extension for Flask that integrates Alembic for handling database migrations within the Flask application.
 
-flask-sqlalchemy==3.0.3: Flask-SQLAlchemy provides integration between Flask and SQLAlchemy, making it easier to work with databases in the Flask application.
+        flask-sqlalchemy==3.0.3: Flask-SQLAlchemy provides integration between Flask and SQLAlchemy, making it easier to work with databases in the Flask application.
 
 flask-wtf==1.1.1: Flask-WTF is an extension for Flask that simplifies working with WTForms, a library for creating and validating forms.
 
