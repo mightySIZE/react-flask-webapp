@@ -9,12 +9,21 @@ def home():
     return render_template('home.html')
 
 @app.route('/data')
-@login_required
 def viewData(): # this function will show the data from the database
     greats = Great.query.all()
     return render_template('viewData.html', greats=greats)
 
+# this route will search data from the database
+@app.route('/searchData', methods=['POST', 'GET'])
+def searchData():
+    if request.method == 'POST':
+        search = request.form.get('search')
+        greats = Great.query.filter(Great.name.contains(search)).all()
+        return render_template('viewData.html', greats=greats)
+    return render_template('searchData.html')
+
 @app.route('/insertData', methods=['POST', 'GET'])
+@login_required
 def insertData(): # this function will insert data into the database
     if request.method == 'POST':
         if  current_user.is_authenticated:
@@ -34,11 +43,6 @@ def insertData(): # this function will insert data into the database
         else:
             flash('You must be logged in to insert data', category='info')
     return render_template('insertData.html')
-
-
-@app.route('/integrations')
-def integrations():
-    return render_template('integrations.html')
 
 @app.route('/pricing')
 def pricing():
@@ -64,6 +68,7 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     flash('You have been logged out', category='success')
