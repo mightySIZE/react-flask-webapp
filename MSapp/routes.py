@@ -44,9 +44,9 @@ def insertData(): # this function will insert data into the database
             flash('You must be logged in to insert data', category='info')
     return render_template('insertData.html')
 
-@app.route('/pricing')
-def pricing():
-    return render_template('pricing.html')
+# @app.route('/pricing')
+# def pricing():
+#     return render_template('pricing.html')
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
