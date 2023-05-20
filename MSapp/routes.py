@@ -1,7 +1,7 @@
 from flask import request, render_template, redirect, url_for, flash, get_flashed_messages
 from MSapp import app, db, bcrypt, login_manager
 from MSapp.models import Great, User
-from MSapp.forms import RegisterationForm, LoginForm
+from MSapp.forms import RegisterationForm, LoginForm, SearchForm
 from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
@@ -16,11 +16,14 @@ def viewData(): # this function will show the data from the database
 # this route will search data from the database
 @app.route('/searchData', methods=['POST', 'GET'])
 def searchData():
-    if request.method == 'POST':
-        search = request.form.get('search')
-        greats = Great.query.filter(Great.name.contains(search)).all()
-        return render_template('viewData.html', greats=greats)
-    return render_template('searchData.html')
+    form = SearchForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        greats = Great.query.filter_by(name=name).all()
+        return render_template('searchData.html', form=form, greats=greats)
+    else:
+        greats = Great.query.all()
+        return render_template('searchData.html', form=form, greats=greats)
 
 @app.route('/insertData', methods=['POST', 'GET'])
 @login_required
