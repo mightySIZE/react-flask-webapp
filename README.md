@@ -4,13 +4,9 @@ This repository contains a Flask web application that utilizes various libraries
 
 # Libraries Used
 
-Flask App Repository
-This repository contains a Flask web application that utilizes various libraries and tools for creating and managing a web application with a database. The application includes features such as user login, database migrations, form handling, and password hashing.
+	alembic==1.11.0: Alembic is a database migration tool for SQLAlchemy. It allows for seamless management of database schema changes over time.
 
-Libraries Used
-alembic==1.11.0: Alembic is a database migration tool for SQLAlchemy. It allows for seamless management of database schema changes over time.
-
-flask==2.3.2: Flask is a lightweight web application framework used to create the core structure and routing of the web application.
+	flask==2.3.2: Flask is a lightweight web application framework used to create the core structure and routing of the web application.
 
 flask-migrate==2.4.0: Flask-Migrate is an extension for Flask that integrates Alembic for handling database migrations within the Flask application.
 
