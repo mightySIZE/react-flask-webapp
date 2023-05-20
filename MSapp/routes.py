@@ -8,21 +8,25 @@ from flask_login import login_user, logout_user, login_required, current_user
 def home():
     return render_template('home.html')
 
+# pass the search form to the template/base.html
+@app.context_processor
+def inject_now():
+    form = SearchForm()
+    return dict(form=form)
+
 @app.route('/data')
 def viewData(): # this function will show the data from the database
     greats = Great.query.all()
     return render_template('viewData.html', greats=greats)
 
 # this route will search data from the database
-@app.route('/searchData', methods=['POST', 'GET'])
+@app.route('/searchData', methods=['POST'])
 def searchData():
     form = SearchForm()
     if form.validate_on_submit():
-        name = form.name.data
-        greats = Great.query.filter_by(name=name).all()
-        return render_template('searchData.html', form=form, greats=greats)
-    else:
-        greats = Great.query.all()
+        searchedName = form.searchName.data
+        # i want to search my Great database for names LIKE the searchedName
+        greats = Great.query.filter(Great.name.like('%' + searchedName + '%')).all()
         return render_template('searchData.html', form=form, greats=greats)
 
 @app.route('/insertData', methods=['POST', 'GET'])
