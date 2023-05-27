@@ -40,14 +40,6 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('insertData') }}">Insert Data</a></li> 
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('searchData') }}">Search Data</a></li>    
                     <li class="nav-item">           
-                    <form class="container" action={{ url_for('searchData' )}}>
-                        {{ form.hidden_tag() }}
-                        <div class="input-group">
-                            <!-- <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." /> -->
-                            {{ form.searchName(class="bg-light form-control border-0 small", placeholder="Search for great") }}
-                            {{ form.submit(class="btn btn-primary py-0", type="submit") }}
-                        </div>
-                    </form>
                     </li>
                 </ul>
                     {% if current_user.is_authenticated %} <!-- can access current_user because of flask_login -->

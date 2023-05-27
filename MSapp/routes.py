@@ -27,7 +27,7 @@ def searchData():
         searchedName = form.searchName.data
         # i want to search my Great database for names LIKE the searchedName
         greats = Great.query.filter(Great.name.like('%' + searchedName + '%')).all()
-        return render_template('searchData.html', form=form, greats=greats)
+        return render_template('viewData.html', form=form, greats=greats)
 
 @app.route('/insertData', methods=['POST', 'GET'])
 @login_required
