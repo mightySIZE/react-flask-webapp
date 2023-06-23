@@ -20,14 +20,9 @@ def viewData(): # this function will show the data from the database
     return render_template('viewData.html', greats=greats)
 
 # this route will search data from the database
-@app.route('/searchData', methods=['POST'])
-def searchData():
-    form = SearchForm()
-    if form.validate_on_submit():
-        searchedName = form.searchName.data
-        # i want to search my Great database for names LIKE the searchedName
-        greats = Great.query.filter(Great.name.like('%' + searchedName + '%')).all()
-        return render_template('viewData.html', form=form, greats=greats)
+@app.route('/APIs')
+def APIs():
+    return
 
 @app.route('/insertData', methods=['POST', 'GET'])
 @login_required
@@ -51,9 +46,6 @@ def insertData(): # this function will insert data into the database
             flash('You must be logged in to insert data', category='info')
     return render_template('insertData.html')
 
-# @app.route('/pricing')
-# def pricing():
-#     return render_template('pricing.html')
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
