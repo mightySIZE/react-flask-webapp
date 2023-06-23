@@ -12,3 +12,4 @@ email_validator==2.0.0.post2 # this library is used to validate email addresses
 bcrypt==4.0.1 # this library is used to hash passwords
 flask_bcrypt==1.0.1 # this library is used to hash passwords in flask
 flask_login==0.6.2 # this library is used to manage the user login
+python-dotenv==1.0.0 # this library is used to load environment variables from a .env file
