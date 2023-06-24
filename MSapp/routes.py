@@ -22,7 +22,7 @@ def viewData(): # this function will show the data from the database
 # this route will search data from the database
 @app.route('/APIs')
 def APIs():
-    return
+    return render_template('APIs.html')
 
 @app.route('/insertData', methods=['POST', 'GET'])
 @login_required
