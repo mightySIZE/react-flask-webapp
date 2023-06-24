@@ -12,4 +12,4 @@ env_var = os.getenv('FLASK_APP')
 # this line will run the app, will run only if module is directly run and not as an import from another module
 if __name__ == '__main__':
     print("I am being run directly (inside run.py), not as an import from another module")
-    app.run(port=5002, debug=True) # had to run on port 5001 because Mac OSX Monterey (12.x) currently uses ports 5000 and 7000, causes issues sometimes
+    app.run(port=5001, debug=True) # had to run on port 5001 because Mac OSX Monterey (12.x) currently uses ports 5000 and 7000, causes issues sometimes
