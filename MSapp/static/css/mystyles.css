@@ -16,10 +16,11 @@
     text-decoration: underline; /* Adds an underline to the link when it is hovered */
 }
 
-.carousel-slide {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+#carouselCatFacts.carousel {
+    width: 60%; /* Sets the width of the carousel */
+    margin: auto; /* Centers the carousel */
+}
+
+#carouselCatFacts .carousel-inner {
+    text-align: center; /* Centers the text in the carousel */
 }
