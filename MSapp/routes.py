@@ -31,8 +31,6 @@ def APIs():
     
     # Extract the cat facts from the data
     facts = [fact['text'] for fact in data]
-    print(facts[0])
-    print(facts[1])
 
     # Pass the facts to the template for rendering
     return render_template('APIs.html', facts=facts)
