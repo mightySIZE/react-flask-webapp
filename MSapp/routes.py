@@ -1,3 +1,4 @@
+import requests
 from flask import request, render_template, redirect, url_for, flash, get_flashed_messages
 from MSapp import app, db, bcrypt, login_manager
 from MSapp.models import Great, User
@@ -19,10 +20,22 @@ def viewData(): # this function will show the data from the database
     greats = Great.query.all()
     return render_template('viewData.html', greats=greats)
 
-# this route will search data from the database
+# this route will get data from certain public APIs
 @app.route('/APIs')
 def APIs():
-    return render_template('APIs.html')
+    # Make a GET request to the Cat Facts API
+    response = requests.get('https://cat-fact.herokuapp.com/facts')
+    
+    # Retrieve the JSON data from the response
+    data = response.json()
+    
+    # Extract the cat facts from the data
+    facts = [fact['text'] for fact in data]
+    print(facts[0])
+    print(facts[1])
+
+    # Pass the facts to the template for rendering
+    return render_template('APIs.html', facts=facts)
 
 @app.route('/insertData', methods=['POST', 'GET'])
 @login_required

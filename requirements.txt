@@ -13,3 +13,4 @@ bcrypt==4.0.1 # this library is used to hash passwords
 flask_bcrypt==1.0.1 # this library is used to hash passwords in flask
 flask_login==0.6.2 # this library is used to manage the user login
 python-dotenv==1.0.0 # this library is used to load environment variables from a .env file
+requests=2.31.0 # this library is used to make HTTP requests
