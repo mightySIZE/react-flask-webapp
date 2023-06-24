@@ -21,6 +21,7 @@
     margin: auto; /* Centers the carousel */
 }
 
-#carouselCatFacts .carousel-inner {
-    text-align: center; /* Centers the text in the carousel */
+.carousel > .carousel-inner > .carousel-item > img{
+    width:240px; /* Yeap you can change the width and height*/
+    height:400px;
 }
