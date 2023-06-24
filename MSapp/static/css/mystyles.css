@@ -38,5 +38,11 @@
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
-    border-bottom: 10px solid rgb(0, 0, 0);
+}
+
+.carousel-caption {
+    height: auto;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
 }
