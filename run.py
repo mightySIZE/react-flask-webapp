@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
+print(os.getenv('SQLALCHEMY_DATABASE_URI'))
 
 # this file is the entry point for the application, it will run the app by importing the app object from the MSapp module
 # this line will run the app, will run only if module is directly run and not as an import from another module

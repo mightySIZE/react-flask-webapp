@@ -7,7 +7,8 @@ from datetime import timedelta
 import os
 from dotenv import load_dotenv
 
-load_dotenv('.env')
+load_dotenv()
+print(os.getenv('DATABASE_URL')) # this line will print the database url from the .env file, for testing
 
 app = Flask(__name__) # this line will create the flask object
 app.app_context().push() # this line will create the application context, which is needed for the db object because it is not created with the app object in this file
