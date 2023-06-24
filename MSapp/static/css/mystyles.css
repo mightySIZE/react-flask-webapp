@@ -24,3 +24,19 @@
 .carousel > .carousel-inner > .carousel-item > img{
     height:400px;
 }
+
+.carousel-content {
+    position: absolute; /* Position the content */
+    width: 75%; /* Specify the width of the content */
+    height: 10%; /* Specify the height of the content */
+    top: 50%; /* Position the top edge of the content at the middle of the parent element */
+    left: 50%; /* Position the left edge of the content at the middle of the parent element */
+    transform: translate(-50%, -50%);   /* Translate the content to the middle of the parent element */
+    z-index: 1; /* Specify a stack order for the content */
+    text-align: center; /* Center the text */
+    color: rgb(0, 0, 0); /* Set the text color */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    border-bottom: 10px solid rgb(0, 0, 0);
+}
